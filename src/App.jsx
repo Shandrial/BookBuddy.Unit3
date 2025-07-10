@@ -6,7 +6,7 @@ import Nav from './components/Navigations.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import Account from './components/Account.jsx'
-
+import SingleBook from './components/SingleBook.jsx'
 
 function App() {
   const [token, setToken] = useState(null)
@@ -23,10 +23,11 @@ function App() {
 
       <Nav />
       <Routes>
-        <Route path="/" element={<Books token={token}/>} />
-        <Route path="login" element={<Login setToken={setToken} token={token}/>} />
-        <Route path="register" element={<Register setToken={setToken}/>} />
-        <Route path="account" element={<Account token={token}/>} />
+        <Route path="/" element={<Books/>} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="account" element={<Account />} />
+        <Route path='/books/:bookId' element={<SingleBook />} />
       </Routes>
     </>
   )
