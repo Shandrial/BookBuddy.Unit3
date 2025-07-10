@@ -3,12 +3,11 @@
 
 import { useEffect, useState } from "react";
 
-const Account = () => {
+const Account = ({token}) => {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
   const [error, setError] = useState("");
 
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchAccountData = async () => {
@@ -29,7 +28,7 @@ const Account = () => {
       }
     };
 
-    fetchAccountData();
+    if(token){fetchAccountData();}
   }, [token]);
 
   const handleReturn = async (bookId) => {
@@ -48,7 +47,7 @@ const Account = () => {
       setError(err.message);
     }
   };
-
+  if (!token) return <p>Please Log In</p>
   if (error) return <p>{error}</p>;
   if (!user) return <p>Loading account...</p>;
 
