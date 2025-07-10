@@ -24,7 +24,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Books/>} />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login setToken={setToken}/>} />
         <Route path="register" element={<Register />} />
         <Route path="account" element={<Account />} />
       </Routes>
