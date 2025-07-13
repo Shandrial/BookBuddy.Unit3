@@ -23,11 +23,11 @@ function App() {
 
       <Nav />
       <Routes>
-        <Route path="/" element={<Books/>} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="account" element={<Account />} />
-        <Route path='/books/:bookId' element={<SingleBook />} />
+        <Route path="/" element={<Books token={token}/>} />
+        <Route path="login" element={<Login token={token} setToken={setToken}/>} />
+        <Route path="register" element={<Register setToken={setToken}/>} />
+        <Route path="account" element={<Account token={token} setToken={setToken}/>} />
+        <Route path='/books/:bookId' element={<SingleBook token={token}/>} />
       </Routes>
     </>
   )
