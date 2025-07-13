@@ -1,5 +1,6 @@
 /* TODO - add your code to create a functional React component that renders a login form */
 import { useState } from "react";
+
 export default function Login({token, setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,10 +40,14 @@ export default function Login({token, setToken }) {
       setError("Login failed");
     }
   };
+
   return (
-    <>
-      <h3>Please Login</h3>
-      {token ? (
+  <>
+    {token ? (
+      <h3>Welcome back!</h3>
+    ) : (
+      <>
+        <h3>Please Login</h3>
         <form onSubmit={handleSubmit}>
           <h4>Email</h4>
           <input
@@ -65,9 +70,7 @@ export default function Login({token, setToken }) {
           <button type="submit">Login</button>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
-      ) : (
-        <h3>Welcome back!</h3>
-      )}
-    </>
-  );
-}
+      </>
+    )}
+  </>
+)}
