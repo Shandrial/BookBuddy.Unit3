@@ -57,12 +57,23 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
             setErrorBookId(bookId)
         }
     }
-
+   
     return ( ///return the display and infomation needed for the page!
         <>
+        
       <h2> List of all books </h2>
+
         
       <ul> 
+        
+           <div className = "book_list_container">
+            <input type = "text" placeholder="Search for a book" 
+            onChange={(e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredBooks = books.filter(book => book.title.toLowerCase().includes(searchTerm));
+                setBooks(filteredBooks);
+            }} />
+           </div>
             {books.map((book) => (///.map method is used to iterate through each book in the Api, 
             // key is used to drill down into the book titles via book.id, 
             // book.author/title for additional information and book.coverimage for book images!
@@ -83,5 +94,6 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         </ul>
         </>
     )
+
 }
 
