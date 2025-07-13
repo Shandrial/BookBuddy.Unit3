@@ -17,15 +17,15 @@ export default function Books() {
 
     return ( ///return the display and infomation needed for the page!
         <>
-        <h2> List of all books </h2>
-        <ul> 
+        <h2 className='homepage_title'> List of all books </h2>
+        <ul className="book_list_container"> 
             {books.map((book) => (///.map method is used to iterate through each book in the Api, 
             // key is used to drill down into the book titles via book.id, 
             // book.author/title for additional information and book.coverimage for book images!
                 <li key={book.id}>
-                    <Link to={`/books/${book.id}`}>{book.title}</Link> 
-                    <p>Author: {book.author}</p>
-                   <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
+                    <Link className="book_titles" to={`/books/${book.id}`}>{book.title}</Link> 
+                    <p className='book_authors'>Author: {book.author}</p>
+                   <img className="book_covers" src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
               </li>
             ))}
         </ul>

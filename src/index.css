@@ -11,3 +11,48 @@ body {
 }
 
 /* Add your own custom styles here */
+
+/*Flex and grid are properly used for layout
+*/
+
+/**/
+.homepage_title {
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  border:  solid;
+  border-radius: 2em;
+  border-style: inset;
+
+}
+.book_list_container {
+  border: 10px solid lightblue;
+  border-style: double;
+  background-color: rgb(203, 178, 226);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.book_titles {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.book_covers {
+  border: 5px inset goldenrod;
+}
+
+.book_authors {
+  font-style: bold;
+  font-size: 2ch;
+}
+
+/*SingleBook styling*/
+
+.book_descriptions{
+  font-size: 1cap;
+  text-wrap: wrap;
+}
+
+/*proper use of cascading and specificity to prevent bleed into unrelated elements
+/*intuitive User Experience (UX) through a clean interface
