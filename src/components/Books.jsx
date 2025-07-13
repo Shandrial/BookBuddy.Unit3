@@ -14,11 +14,12 @@ export default function Books() {
         };
         fetchBooks();//fetches the infomation from json to be rendered!
     }, []);
-
+           
     return ( ///return the display and infomation needed for the page!
         <>
-        <h2> List of all books </h2>
-        <ul> 
+      <h2> List of all books </h2>
+        
+      <ul> 
             {books.map((book) => (///.map method is used to iterate through each book in the Api, 
             // key is used to drill down into the book titles via book.id, 
             // book.author/title for additional information and book.coverimage for book images!
@@ -32,3 +33,4 @@ export default function Books() {
         </>
     )
 }
+       
