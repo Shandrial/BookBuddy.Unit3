@@ -2,8 +2,11 @@
  import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-export default function Books() {
+export default function Books({ token }) {
     const [books, setBooks] = useState([]);
+    const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
+    const [errorBookId, setErrorBookId] = useState("")
 ///useEffect is used to pull books from API using Fetch method!
     useEffect(() => {
         const fetchBooks = async () => {
@@ -14,7 +17,45 @@ export default function Books() {
         };
         fetchBooks();//fetches the infomation from json to be rendered!
     }, []);
-           
+
+    async function handleCheckOut(bookId) {
+        setError("")
+        setSuccess("")
+        setErrorBookId(null)
+
+        if (!token) {
+            setError("Please Log In to Check Out a Book")
+            setErrorBookId(bookId)
+            return
+        }
+
+        try {
+            const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations", 
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ bookId }), 
+        });
+
+        if (!response.ok) {
+            const result = await response.json()
+            setError(result.message || "Failed to Check Out Book")
+            setErrorBookId(bookId)
+            return;
+        }
+        setSuccess("Book Checked Out Successfully")
+        setBooks(books => books.map(book => book.id === bookId ? { ...book, available: false} : book)
+        )
+
+        } catch (err) {
+            setError("Failed to check out book.")
+            setErrorBookId(bookId)
+        }
+    }
+
     return ( ///return the display and infomation needed for the page!
         <>
       <h2> List of all books </h2>
@@ -26,7 +67,16 @@ export default function Books() {
                 <li key={book.id}>
                     <Link to={`/books/${book.id}`}>{book.title}</Link> 
                     <p>Author: {book.author}</p>
-                   <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
+                    <p>Descriptions:{book.description}</p>
+                    <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
+                    {book.available ? (
+                        <>
+                            <button onClick={() => handleCheckOut(book.id)}>Check Out</button>
+                            {errorBookId === book.id && error && (<span>{error}</span>)}
+                        </>
+                        ) : (
+                        <button disabled>Not Available</button>)
+                    }
               </li>
             ))}
         </ul>
