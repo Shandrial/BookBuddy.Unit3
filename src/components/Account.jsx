@@ -12,7 +12,7 @@ const Account = ({token}) => {
   useEffect(() => {
     const fetchAccountData = async () => {
       try {
-        const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api", {
+        const res = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
