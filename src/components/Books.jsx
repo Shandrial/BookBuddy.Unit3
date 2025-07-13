@@ -25,7 +25,6 @@ export default function Books() {
                 <li key={book.id}>
                     <Link to={`/books/${book.id}`}>{book.title}</Link> 
                     <p>Author: {book.author}</p>
-                    <p>Descriptions:{book.description}</p>
                    <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
               </li>
             ))}
