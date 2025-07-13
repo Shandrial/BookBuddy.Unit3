@@ -3,9 +3,8 @@
 
 import { useEffect, useState } from "react";
 
-const Account = ({token}) => {
+const Account = ({token, checkedOutBooks, setCheckedOutBooks}) => {
   const [user, setUser] = useState(null);
-  const [books, setBooks] = useState([]);
   const [error, setError] = useState("");
 
 
@@ -21,20 +20,21 @@ const Account = ({token}) => {
         if (!res.ok) throw new Error("Failed to load account data");
 
         const data = await res.json();
+        console.log("Account API response:", data); // <--- Add this
         setUser(data);
-        setBooks(data.checkedOutBooks || []);
+        setCheckedOutBooks(data.reservations || []);
       } catch (err) {
         setError(err.message);
       }
     };
 
     if(token){fetchAccountData();}
-  }, [token]);
+  }, [token, setCheckedOutBooks]);
 
-  const handleReturn = async (bookId) => {
+  const handleReturn = async (reservationId) => {
     try {
-      const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/return/${bookId}`, {
-        method: "PATCH",
+      const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations/${reservationId}`, {
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ const Account = ({token}) => {
 
       if (!res.ok) throw new Error("Failed to return book");
 
-      setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
+      setCheckedOutBooks((prevBooks) => prevBooks.filter((book) => book.id !== reservationId));
     } catch (err) {
       setError(err.message);
     }
@@ -57,12 +57,17 @@ const Account = ({token}) => {
       <p>Email: {user.email}</p>
 
       <h3>Checked Out Books</h3>
-      {books.length === 0 ? (
+      {checkedOutBooks.length === 0 ? (
         <p>You currently have no books checked out.</p>
       ) : (
         <ul>
-          {books.map((book) => (
+          {checkedOutBooks.map((book) => (
             <li key={book.id}>
+              <img 
+              src={book.coverimage} 
+              alt={book.title} 
+              style={{ width: '100px', height: '150px' }} 
+              />
               <strong>{book.title}</strong> by {book.author}
               <br />
               <button onClick={() => handleReturn(book.id)}>Return</button>

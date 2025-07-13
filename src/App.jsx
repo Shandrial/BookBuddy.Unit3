@@ -10,6 +10,7 @@ import SingleBook from './components/SingleBook.jsx'
 
 function App() {
   const [token, setToken] = useState(null)
+  const [checkedOutBooks, setCheckedOutBooks] = useState([])
 
   return (
     <>
@@ -23,10 +24,10 @@ function App() {
 
       <Nav />
       <Routes>
-        <Route path="/" element={<Books token={token}/>} />
+        <Route path="/" element={<Books token={token} checkedOutBooks={checkedOutBooks} setCheckedOutBooks={setCheckedOutBooks}/>} />
         <Route path="login" element={<Login token={token} setToken={setToken}/>} />
         <Route path="register" element={<Register setToken={setToken}/>} />
-        <Route path="account" element={<Account token={token} setToken={setToken}/>} />
+        <Route path="account" element={<Account token={token} setToken={setToken} checkedOutBooks={checkedOutBooks} setCheckedOutBooks={setCheckedOutBooks}/>} />
         <Route path='/books/:bookId' element={<SingleBook token={token}/>} />
       </Routes>
     </>
