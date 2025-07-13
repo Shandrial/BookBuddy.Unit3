@@ -1,12 +1,14 @@
 /* TODO - add your code to create a functional React component that displays all of the available books in the library's catalog. Fetch the book data from the provided API. Users should be able to click on an individual book to navigate to the SingleBook component and view its details. */
- import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-export default function Books({ token }) {
+
+export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [errorBookId, setErrorBookId] = useState("")
+    const navigate = useNavigate();
 ///useEffect is used to pull books from API using Fetch method!
     useEffect(() => {
         const fetchBooks = async () => {
@@ -47,9 +49,9 @@ export default function Books({ token }) {
             return;
         }
         setSuccess("Book Checked Out Successfully")
-        setBooks(books => books.map(book => book.id === bookId ? { ...book, available: false} : book)
-        )
-
+        setBooks(books => books.map(book => book.id === bookId ? { ...book, available: false} : book))
+        // Redirect to account page so Account fetches fresh data
+        navigate("/account");
         } catch (err) {
             setError("Failed to check out book.")
             setErrorBookId(bookId)
@@ -83,4 +85,4 @@ export default function Books({ token }) {
         </>
     )
 }
-       
+
