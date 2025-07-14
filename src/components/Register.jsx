@@ -58,9 +58,9 @@ export default function Register({setToken}) {
 
     return(
         <>
-            <h3>Register Below:</h3>
+            <h3 className='account_container'>Register Below:</h3>
 
-            <form onSubmit={handleSubmit}>
+            <form className='account_container' onSubmit={handleSubmit}>
 
                 <label>
                     First Name: 
@@ -115,7 +115,7 @@ export default function Register({setToken}) {
 
                 <br />
 
-                <button type="submit">Register Now</button>
+                <button className='button' type="submit">Register Now</button>
 
             </form>
 
