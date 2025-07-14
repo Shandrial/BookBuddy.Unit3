@@ -38,7 +38,7 @@ export default function Register({setToken}) {
             })
 
             const result = await response.json()
-            console.log(result)
+
             if (result.token) {
                 setToken(result.token)
                 setSuccess("Registration Successful!")
@@ -51,7 +51,6 @@ export default function Register({setToken}) {
                 setError(result.message || "Registration Failed")
             }
         } catch(error) {
-            console.log(error)
             setError("Registration failed")
         }
     }
