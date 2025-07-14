@@ -45,11 +45,11 @@ export default function Login({token, setToken }) {
   return (
   <>
     {token ? (
-      <h3>Welcome back!</h3>
+      <h3 className="welcome_back">Welcome back!</h3>
     ) : (
       <>
         <h3>Please Login</h3>
-        <form onSubmit={handleSubmit}>
+        <form className="login_container" onSubmit={handleSubmit}>
           <h4>Email</h4>
           <input
             type="email"
@@ -68,7 +68,7 @@ export default function Login({token, setToken }) {
           />
           <br />
           <br />
-          <button type="submit">Login</button>
+          <button className="button" type="submit">Login</button>
           {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </>
