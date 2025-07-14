@@ -10,12 +10,6 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
-
-/*Flex and grid are properly used for layout
-*/
-
-/**/
 .homepage_title {
   text-align: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,7 +46,48 @@ body {
 .book_descriptions{
   font-size: 1cap;
   text-wrap: wrap;
+
 }
 
-/*proper use of cascading and specificity to prevent bleed into unrelated elements
-/*intuitive User Experience (UX) through a clean interface
+.availability {
+  padding-left: 40px;
+  text-decoration:solid;
+  
+}
+
+/*login styling*/
+.login_container {
+  background-color: rgb(203, 178, 226);
+  border: 10px solid lightblue;
+  border-style: double;
+}
+
+.welcome_back {
+  background-color: rgb(203, 178, 226);
+  border: 10px solid lightblue;
+  border-style: double;
+}
+
+/*Register Page styling*/
+.register_container {
+  background-color: rgb(203, 178, 226);
+  border: 10px solid lightblue;
+  border-style: double;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Account Page styling*/
+.account_container {
+  background-color: rgb(203, 178, 226);
+  border: 10px solid lightblue;
+  border-style: double;
+}
+
+.button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  border:inset;
+  background-color: rgb(168, 123, 211)
+}
