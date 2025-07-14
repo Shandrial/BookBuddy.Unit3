@@ -57,9 +57,12 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         }
     }
    
+
     return ( 
         <>
+        
       <h2> List of all books </h2>
+
         
       <ul> 
         
@@ -71,15 +74,16 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
                 setBooks(filteredBooks);
             }} />
            </div>
+
             {books.map((book) => (
+
                 <li className = "book_list_container" key={book.id}>
                     <Link to={`/books/${book.id}`}>{book.title}</Link> 
                     <p>Author: {book.author}</p>
-                    <p>Descriptions:{book.description}</p>
                     <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
                     {book.available ? (
                         <>
-                            <button onClick={() => handleCheckOut(book.id)}>Check Out</button>
+                            <button className='button' onClick={() => handleCheckOut(book.id)}>Check Out</button>
                             {errorBookId === book.id && error && (<span>{error}</span>)}
                         </>
                         ) : (
@@ -90,5 +94,6 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         </ul>
         </>
     )
+
 }
 

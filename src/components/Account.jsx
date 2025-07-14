@@ -47,13 +47,13 @@ const Account = ({token, checkedOutBooks, setCheckedOutBooks}) => {
       setError(err.message);
     }
   };
-  if (!token) return <p>Please Log In</p>
+  if (!token) return <p className="account_container">Please Log In</p>
   if (error) return <p>{error}</p>;
   if (!user) return <p>Loading account...</p>;
 
   return (
-    <div>
-      <h2>Welcome, {user.firstname} {user.lastname}</h2>
+    <div className="account_container">
+      <h2 >Welcome, {user.firstname} {user.lastname}</h2>
       <p>Email: {user.email}</p>
 
       <h3>Checked Out Books</h3>
@@ -70,7 +70,7 @@ const Account = ({token, checkedOutBooks, setCheckedOutBooks}) => {
               />
               <strong>{book.title}</strong> by {book.author}
               <br />
-              <button onClick={() => handleReturn(book.id)}>Return</button>
+              <button className="button" onClick={() => handleReturn(book.id)}>Return</button>
             </li>
           ))}
         </ul>

@@ -10,6 +10,7 @@ body {
   margin-right: 10px;
 }
 
+/*Homepage*/
 .homepage_title {
   text-align: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,8 +18,8 @@ body {
   border:  solid;
   border-radius: 2em;
   border-style: inset;
-
 }
+
 .book_list_container {
   border: 10px solid lightblue;
   border-style: double;
@@ -42,17 +43,25 @@ body {
 }
 
 /*SingleBook styling*/
+#single_book_container {
+  background-color: rgb(203, 178, 226);
+  border: 10px solid lightblue;
+  border-style: double;
+}
+
+.single_book_cover {
+  border: 5px inset goldenrod;
+}
 
 .book_descriptions{
   font-size: 1cap;
   text-wrap: wrap;
-
 }
+
 
 .availability {
   padding-left: 40px;
   text-decoration:solid;
-  
 }
 
 /*login styling*/
@@ -61,6 +70,7 @@ body {
   border: 10px solid lightblue;
   border-style: double;
 }
+
 
 .welcome_back {
   background-color: rgb(203, 178, 226);

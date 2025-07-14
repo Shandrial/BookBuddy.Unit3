@@ -12,7 +12,6 @@ const token = localStorage.getItem("token")
             try {
                 const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${bookId}`);
                 const data = await res.json();
-                console.log(data);
                 setBook(data);
             } catch(error){
                 console.log(error);
@@ -21,20 +20,22 @@ const token = localStorage.getItem("token")
         fetchSingleBook()
 
     },[])
-console.log(book);
+
    return (
     <>
-       { book && (<div>
+       { book && (<div id='single_book_container'>
            
             <h2>{book.title}</h2>
-            <img src={book.coverimage} alt={book.title} style={{width: "auto", height: "400px"}} />
+            <img className='single_book_cover' src={book.coverimage} alt={book.title} style={{width: "auto", height: "400px"}} />
             <li>
                 <ul>
                     {book.author}
+                    <br></br>
+                    <br></br>
                     {book.description}
                 </ul>
             </li>
-            <p>Available: {book.available ? "yes" : "no"}</p>
+            <p className="availability">Available: {book.available ? "Yes" : "No"}</p>
         </div>)}
     </>
 )
