@@ -66,7 +66,7 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         
       <ul> 
         
-           <div className = "book_list_container">
+           <div >
             <input type = "text" placeholder="Search for a book" 
             onChange={(e) => {
                 const searchTerm = e.target.value.toLowerCase();
@@ -77,13 +77,13 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
             {books.map((book) => (///.map method is used to iterate through each book in the Api, 
             // key is used to drill down into the book titles via book.id, 
             // book.author/title for additional information and book.coverimage for book images!
-                <li key={book.id}>
+                <li className = "book_list_container" key={book.id}>
                     <Link to={`/books/${book.id}`}>{book.title}</Link> 
                     <p>Author: {book.author}</p>
                     <img src={book.coverimage} alt={book.title} style={{ width: '100px', height: '150px' }} />
                     {book.available ? (
                         <>
-                            <button onClick={() => handleCheckOut(book.id)}>Check Out</button>
+                            <button className='button' onClick={() => handleCheckOut(book.id)}>Check Out</button>
                             {errorBookId === book.id && error && (<span>{error}</span>)}
                         </>
                         ) : (
