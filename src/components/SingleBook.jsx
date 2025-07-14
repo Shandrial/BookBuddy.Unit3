@@ -4,7 +4,6 @@ export default function SingleBook() {
 const { bookId } = useParams();
 const [book, setBook] = useState(null);
 const [error, setError] = useState("");
-const [success, setSuccess] = useState("")
 const token = localStorage.getItem("token")
 
     useEffect (()=>{
@@ -14,8 +13,8 @@ const token = localStorage.getItem("token")
                 const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${bookId}`);
                 const data = await res.json();
                 setBook(data);
-            } catch(err){
-                console.log(err);
+            } catch(error){
+                console.log(error);
             } 
         }
         fetchSingleBook()
@@ -41,9 +40,3 @@ const token = localStorage.getItem("token")
     </>
 )
 }
-//You will have to comunicate with the api and DRILL -> via dot notation OR { somethin } depending on how we're passng props!
-//What does that mean for you>>
-//useNav could be useful here, let's google
-//May need to create a route like in the app.jsxfile for the Single page view that ur making
-//WHen ppl click on the book, it;ll create a new URL, and JUST the book they clicked
-//AND it'll re-render the page

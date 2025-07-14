@@ -1,4 +1,5 @@
 /* TODO - add your code to create a functional React component that displays all of the available books in the library's catalog. Fetch the book data from the provided API. Users should be able to click on an individual book to navigate to the SingleBook component and view its details. */
+
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -9,15 +10,14 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
     const [success, setSuccess] = useState("")
     const [errorBookId, setErrorBookId] = useState("")
     const navigate = useNavigate();
-///useEffect is used to pull books from API using Fetch method!
+
     useEffect(() => {
         const fetchBooks = async () => {
-            const response = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books');//API URL
-            const data = await response.json();///Parses the data received into Json!
-            //SetBooks is used to render data from json!
+            const response = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books');
+            const data = await response.json();
             setBooks(data);
         };
-        fetchBooks();//fetches the infomation from json to be rendered!
+        fetchBooks();
     }, []);
 
     async function handleCheckOut(bookId) {
@@ -50,7 +50,6 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         }
         setSuccess("Book Checked Out Successfully")
         setBooks(books => books.map(book => book.id === bookId ? { ...book, available: false} : book))
-        // Redirect to account page so Account fetches fresh data
         navigate("/account");
         } catch (err) {
             setError("Failed to check out book.")
@@ -58,7 +57,8 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
         }
     }
    
-    return ( ///return the display and infomation needed for the page!
+
+    return ( 
         <>
         
       <h2> List of all books </h2>
@@ -74,9 +74,9 @@ export default function Books({ token, checkedOutBooks, setCheckedOutBooks }) {
                 setBooks(filteredBooks);
             }} />
            </div>
-            {books.map((book) => (///.map method is used to iterate through each book in the Api, 
-            // key is used to drill down into the book titles via book.id, 
-            // book.author/title for additional information and book.coverimage for book images!
+
+            {books.map((book) => (
+
                 <li className = "book_list_container" key={book.id}>
                     <Link to={`/books/${book.id}`}>{book.title}</Link> 
                     <p>Author: {book.author}</p>

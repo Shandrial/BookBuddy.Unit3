@@ -20,7 +20,7 @@ const Account = ({token, checkedOutBooks, setCheckedOutBooks}) => {
         if (!res.ok) throw new Error("Failed to load account data");
 
         const data = await res.json();
-        console.log("Account API response:", data); // <--- Add this
+        console.log("Account API response:", data);
         setUser(data);
         setCheckedOutBooks(data.reservations || []);
       } catch (err) {

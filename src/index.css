@@ -10,11 +10,6 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
-
-/*Flex and grid are properly used for layout
-*/
-
 /*Homepage*/
 .homepage_title {
   text-align: center;
@@ -61,13 +56,12 @@ body {
 .book_descriptions{
   font-size: 1cap;
   text-wrap: wrap;
-
 }
+
 
 .availability {
   padding-left: 40px;
   text-decoration:solid;
-  
 }
 
 /*login styling*/
@@ -76,6 +70,7 @@ body {
   border: 10px solid lightblue;
   border-style: double;
 }
+
 
 .welcome_back {
   background-color: rgb(203, 178, 226);
@@ -106,8 +101,3 @@ body {
   border:inset;
   background-color: rgb(168, 123, 211)
 }
-
-
-
-/*proper use of cascading and specificity to prevent bleed into unrelated elements
-/*intuitive User Experience (UX) through a clean interface
