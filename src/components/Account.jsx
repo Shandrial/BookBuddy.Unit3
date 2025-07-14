@@ -47,7 +47,7 @@ const Account = ({token, checkedOutBooks, setCheckedOutBooks}) => {
       setError(err.message);
     }
   };
-  if (!token) return <p>Please Log In</p>
+  if (!token) return <p className="account_container">Please Log In</p>
   if (error) return <p>{error}</p>;
   if (!user) return <p>Loading account...</p>;
 

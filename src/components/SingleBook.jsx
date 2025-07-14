@@ -13,7 +13,6 @@ const token = localStorage.getItem("token")
             try {
                 const res = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${bookId}`);
                 const data = await res.json();
-                console.log(data);
                 setBook(data);
             } catch(err){
                 console.log(err);
@@ -22,7 +21,7 @@ const token = localStorage.getItem("token")
         fetchSingleBook()
 
     },[])
-console.log(book);
+
    return (
     <>
        { book && (<div id='single_book_container'>
